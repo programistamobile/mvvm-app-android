@@ -1,19 +1,19 @@
 package com.programistamobile.mvvmapp.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.programistamobile.mvvmapp.R
 import com.programistamobile.mvvmapp.domain.FilmModel
 import kotlinx.android.synthetic.main.activity_films.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 typealias OnRemoveFilmListener = (filmModel: FilmModel) -> Unit
 
 class FilmsActivity : AppCompatActivity() {
 
-    private val viewModel: FilmsViewModel by viewModels()
+    private val viewModel: FilmsViewModel by viewModel()
     private val adapter: FilmsAdapter by lazy {
         FilmsAdapter(
             onRemoveFilmListener = { viewModel.removeFilm(it) }

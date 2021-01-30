@@ -1,13 +1,11 @@
 package com.programistamobile.mvvmapp.data
 
 import androidx.lifecycle.LiveData
-import com.programistamobile.mvvmapp.FilmsApplication
 import com.programistamobile.mvvmapp.domain.FilmModel
 
-class FilmsRepository {
-
-    /* TODO Should be injected by DI :) */
-    private val filmsDao: FilmsDao = FilmsApplication.database.filmDao()
+class FilmsRepository(
+    private val filmsDao: FilmsDao
+) {
 
     fun fetchAllFilms(): LiveData<List<FilmModel>> =
         filmsDao.fetchAllFilms()

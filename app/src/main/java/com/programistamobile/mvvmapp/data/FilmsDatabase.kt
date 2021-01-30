@@ -8,3 +8,5 @@ import com.programistamobile.mvvmapp.domain.FilmModel
 abstract class FilmsDatabase : RoomDatabase() {
     abstract fun filmDao(): FilmsDao
 }
+
+const val DB_NAME = "films_database"

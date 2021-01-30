@@ -7,19 +7,19 @@ import com.programistamobile.mvvmapp.data.FilmsRepository
 import com.programistamobile.mvvmapp.domain.FilmModel
 
 class FilmsViewModel(
-    private val repository: FilmsRepository = FilmsRepository()
+    private val filmsRepository: FilmsRepository
 ) : ViewModel() {
 
     fun fetchAllFilmsLiveData(): LiveData<List<FilmModel>> =
-        repository.fetchAllFilms()
+        filmsRepository.fetchAllFilms()
 
     fun removeFilm(filmModel: FilmModel) {
-        DeleteAsyncTask(repository).execute(filmModel)
+        DeleteAsyncTask(filmsRepository).execute(filmModel)
     }
 
     fun storeFilm(title: String) {
         val filmModel = FilmModel(title)
-        InsertAsyncTask(repository).execute(filmModel)
+        InsertAsyncTask(filmsRepository).execute(filmModel)
     }
 }
 
